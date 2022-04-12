@@ -1,3 +1,4 @@
+import java.util.Iterator;
 import java.util.Set;
 import java.util.HashSet;
 import static org.junit.Assert.*;
@@ -21,6 +22,18 @@ public class TestBSTMapExtra {
         Set<String> keySet = b.keySet();
         assertTrue(values.containsAll(keySet));
         assertTrue(keySet.containsAll(values));
+    }
+    @Test
+    public void itratorTest(){
+        BSTMap<Integer, Integer> b = new BSTMap<Integer, Integer>();
+        for (int i = 0; i < 10; i++) {
+            b.put(i, 1);
+        }
+        b.printInOrder();
+        Iterator<Integer> bit = b.iterator();
+        for (int i : b) {
+            System.out.print(i);
+        }
     }
 
     /* Remove Test
@@ -61,7 +74,8 @@ public class TestBSTMapExtra {
         q.put("b","a");
         q.put("a","a");
         q.put("d","a");
-        q.put("e","a");                         // a b c d e
+        q.put("e","a");
+        q.printInOrder();// a b c d e
         assertTrue(null != q.remove("e"));      // a b c d
         assertTrue(q.containsKey("a"));
         assertTrue(q.containsKey("b"));
